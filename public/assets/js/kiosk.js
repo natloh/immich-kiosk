@@ -145,7 +145,10 @@
     }
 
     isFullscreen = !isFullscreen;
-    fullscreenButton?.classList.toggle("navigation--fullscreen-enabled");
+
+    if (fullscreenButton) {
+      fullscreenButton.classList.toggle("navigation--fullscreen-enabled");
+    }
   }
 
   /**
@@ -153,9 +156,13 @@
    */
   function startPolling() {
     progressBarElement = htmx.find(".progress--bar");
-    progressBarElement?.classList.remove("progress--bar-paused");
+    if (progressBarElement) {
+      progressBarElement.classList.remove("progress--bar-paused");
+    }
 
-    menuPausePlayButton?.classList.remove("navigation--control--paused");
+    if (menuPausePlayButton) {
+      menuPausePlayButton.classList.remove("navigation--control--paused");
+    }
 
     lastUpdateTime = 0;
     animationFrameId = requestAnimationFrame(updateKiosk);
@@ -166,8 +173,14 @@
    */
   function stopPolling() {
     cancelAnimationFrame(animationFrameId);
-    progressBarElement?.classList.add("progress--bar-paused");
-    menuPausePlayButton?.classList.add("navigation--control--paused");
+    
+    if (progressBarElement) {
+      progressBarElement.classList.add("progress--bar-paused");
+    }
+    
+    if (menuPausePlayButton) {
+      menuPausePlayButton.classList.add("navigation--control--paused");
+    }
   }
 
   /**
@@ -175,7 +188,11 @@
    */
   function togglePolling() {
     isPaused ? startPolling() : stopPolling();
-    menu?.classList.toggle("navigation-hidden");
+
+    if (menu) {
+      menu.classList.toggle("navigation-hidden");
+    }
+
     isPaused = !isPaused;
   }
 
@@ -184,16 +201,27 @@
    */
   function addEventListeners() {
     // Pause and show menu
-    kiosk?.addEventListener("click", togglePolling);
-    menuPausePlayButton?.addEventListener("click", togglePolling);
+    if (kiosk) {
+      kiosk.addEventListener("click", togglePolling);
+    }
+    
+    if (menuPausePlayButton) {
+      menuPausePlayButton.addEventListener("click", togglePolling);
+    }
 
-    fullscreenButton?.addEventListener("click", toggleFullscreen);
+    if (fullscreenButton) {
+      fullscreenButton.addEventListener("click", toggleFullscreen);
+    }
+
     document.addEventListener("fullscreenchange", () => {
       isFullscreen = !!document[fullscreenAPI.fullscreenElement];
-      fullscreenButton?.classList.toggle(
-        "navigation--fullscreen-enabled",
-        isFullscreen,
-      );
+      
+      if (fullscreenButton) {
+        fullscreenButton.classList.toggle(
+          "navigation--fullscreen-enabled",
+          isFullscreen,
+        );
+      }
     });
   }
 
