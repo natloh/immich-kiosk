@@ -228,3 +228,10 @@
   // Initialize Kiosk when the DOM is fully loaded
   document.addEventListener("DOMContentLoaded", init);
 })();
+if (/iPad/.test(navigator.userAgent)) {
+  var styles = "html,body{height: 768px !important;}#kiosk{height: 100% !important}.frame{height: 100% !important}.frame--image{height: 100% !important}";
+  var styleSheet = document.createElement("style");
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
+  setTimeout(() => {window.scrollTo(0, 5000);}, 300);
+}
