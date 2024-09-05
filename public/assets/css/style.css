@@ -337,8 +337,9 @@ body {
     left: 0;
     color: #fff;
     font-size: 3rem;
-    padding: 1rem;
+    padding: 0 0 1rem 4rem;
     text-shadow: 0 0 20px black;
+    text-shadow: 0 0 20px black,0 0 30px black,0 0 80px black,0 0 100px black;
     background-color: rgba(0, 0, 0, 0.3);
     background: rgb(0, 0, 0);
     background: -moz-linear-gradient(
