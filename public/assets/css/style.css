@@ -357,6 +357,7 @@ body {
         rgba(0, 0, 0, 0.500437675070028) 0%,
         rgba(0, 0, 0, 0) 100%
     );
+    background: none;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000", GradientType=1);
 
     z-index: 10000;
